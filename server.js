@@ -4,7 +4,7 @@ var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
-var CONTACTS_COLLECTION = "contacts";
+var SENSOR_DATA_COLLECTION = "sensorData";
 
 var app = express();
 app.use(express.static(__dirname + "/public"));
@@ -32,22 +32,22 @@ function handleError(res, reason, message, code) {
   res.status(code || 500).json({"error": message});
 }
 
-app.get("/contacts", function(req, res) {
+app.get("/sensorData", function(req, res) {
 
 });
 
-app.post("/contacts", function(req, res) {
-  var newContact = req.body;
-  newContact.createDate = new Date();
+app.post("/sensorData", function(req, res) {
+  var newData = req.body;
+  newData.createDate = new Date();
 
-  if(!(req.body.firstName || req.body.lastName)) {
-    handleError(res, "Invalid user input", "Must provide a first or last name", 400);
-    return;
-  }
+  // if(!(req.body.firstName || req.body.lastName)) {
+  //   handleError(res, "Invalid user input", "Must provide a first or last name", 400);
+  //   return;
+  // }
 
-  db.collection(CONTACTS_COLLECTION).insertOne(newContact, function(err, doc) {
+  db.collection(SENSOR_DATA_COLLECTION).insertOne(newData, function(err, doc) {
     if(err) {
-      handleError(res, err.message, "Failed to create new contact.");
+      handleError(res, err.message, "Failed to create new data points.");
       return;
     } else {
       res.status(201).json(doc.ops[0]);
@@ -55,6 +55,6 @@ app.post("/contacts", function(req, res) {
   });
 });
 
-app.get("/contacts/:id", function(req, res) {
+app.get("/sensorData/:id", function(req, res) {
 
 })
