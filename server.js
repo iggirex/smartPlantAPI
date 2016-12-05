@@ -40,18 +40,23 @@ app.get("/", function(req, res, next) {
   res.sendFile(path.join(__dirname + "index.html"));
 });
 
+app.get("/sensorData", function(req, res) {
+  db.collection(SENSOR_DATA_COLLECTION).find({}).toArray(function(err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed to get contacts.");
+    } else {
+      res.status(200).json(docs);
+    }
+  });
+});
+
 app.post("/sensorData", function(req, res) {
   var newData = req.body;
   newData.createDate = new Date();
 
-app.get("/resultCharts", function(req, res, next) {
-  res.sendFile("index.html")
-})
-
-  // if(!(req.body.firstName || req.body.lastName)) {
-  //   handleError(res, "Invalid user input", "Must provide a first or last name", 400);
-  //   return;
-  // }
+// app.get("/resultCharts", function(req, res, next) {
+//   res.sendFile("index.html")
+// })
 
   db.collection(SENSOR_DATA_COLLECTION).insertOne(newData, function(err, doc) {
     if(err) {
@@ -61,8 +66,8 @@ app.get("/resultCharts", function(req, res, next) {
       res.status(201).json(doc.ops[0]);
     }
   });
+
 });
 
 app.get("/sensorData/:id", function(req, res) {
-
 })
