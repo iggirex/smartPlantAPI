@@ -36,7 +36,9 @@ function handleError(res, reason, message, code) {
 //
 // });
 
-app.use("/", index.html);
+app.get("/", function(req, res, next) {
+  res.sendFile("index.html");
+});
 
 app.post("/sensorData", function(req, res) {
   var newData = req.body;
