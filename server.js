@@ -45,7 +45,7 @@ app.post("/sensorData", function(req, res) {
   newData.createDate = new Date();
 
 app.get("/resultCharts", function(req, res, next) {
-  res.render("/index.html")
+  res.sendFile("index.html")
 })
 
   // if(!(req.body.firstName || req.body.lastName)) {
