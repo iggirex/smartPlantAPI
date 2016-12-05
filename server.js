@@ -37,7 +37,7 @@ function handleError(res, reason, message, code) {
 // });
 
 app.get("/", function(req, res, next) {
-  res.sendFile("index.html");
+  res.sendFile(path.join(__dirname + "index.html"));
 });
 
 app.post("/sensorData", function(req, res) {
