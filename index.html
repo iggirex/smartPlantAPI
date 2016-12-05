@@ -4,82 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="base.css">
-  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Exo+2:400,500,600|Roboto+Slab" rel="stylesheet">
   <title>D3 Graphic</title>
-  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.10/d3.js"></script>
 </head>
 <body>
+  <div>
+    <h1>Welcome to FloraGro</h1>
+  </div>
   <script>
 
-    //Making a paragraph in Javascript
-    var body = document.body;
-    var paragraph = document.createElement('p');
-    var paragraph_text = document.createTextNode("My favorite color is orange.");
-
-    paragraph.appendChild(paragraph_text);
-    body.appendChild(paragraph);
-
-    //Making a paragraph in D3
-    var paragraph_2 = d3.select('body')
-                        .append('p')
-                        .text("My second paragraph color is green Mond$$$")
-
-
-    //Setting a color with JavasScript
-    paragraph.setAttribute("class", "color fav_color");
-    paragraph.style.color = "orange";
-
-
-    //Settin a color with D3
-    paragraph_2.attr("class", "color");
-    paragraph_2.style("color", "green");
-
-
-
-    //Selecting multiple elements in Javascript
-    var all_paragraphs = document.getElementsByTagName("p");
-
-    for(var i=0; i < all_paragraphs.length; i++) {
-      all_paragraphs[i].style.fontSize = "20px";
-    }
-
-    //Selecting multiple items USING D3
-    var all_paragraphs_2 = d3.select("p")
-      .style("font-family", "sans-serif");
-
-      //Togglig classes in JS
-      var classes = paragraph.className;
-      var classes_array = classes.split(" ");
-      var filtered_classes = classes_array.filter(function(c) {
-        return c != "fav_color";
-      });
-      paragraph.className = filtered_classes.join(" ");
-      console.log("again")
-
-      //Toggling classes with D3
-      paragraph_2.classed("fav_color", true);
-
-
-
-
-  </script>
-  <!-- <h1>In the other vidja</h1>
-  <div class="container">
-    <h2>D3 STuff</h2>
-    <section id="chart">
-      <div class="item">Barrott Bellingham</div>
-      <div class="item">Bugga Bugga</div>
-      <div class="item">Villa Nuevala</div>
-      <div class="item">Rod Steward</div>
-      <div class="item">Nelson Mandela</div>
-      <div class="item">Xhou Ta</div>
-
-    </section>
-  </div> -->
-
-  <!-- <script src="server.js"></script> -->
   <script src="script.js"></script>
 </body>
 </html>
