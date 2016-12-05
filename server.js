@@ -32,13 +32,19 @@ function handleError(res, reason, message, code) {
   res.status(code || 500).json({"error": message});
 }
 
-app.get("/sensorData", function(req, res) {
+// app.get("/sensorData", function(req, res) {
+//
+// });
 
-});
+app.use("/", routes);
 
 app.post("/sensorData", function(req, res) {
   var newData = req.body;
   newData.createDate = new Date();
+
+app.get("/resultCharts", function(req, res, next) {
+  res.render("/index.html")
+})
 
   // if(!(req.body.firstName || req.body.lastName)) {
   //   handleError(res, "Invalid user input", "Must provide a first or last name", 400);
