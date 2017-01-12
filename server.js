@@ -4,9 +4,12 @@ var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
+var cors = require('cors');
+
 var SENSOR_DATA_COLLECTION = "sensorData";
 
 var app = express();
+app.use(cors())
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
